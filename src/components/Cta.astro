@@ -1,0 +1,43 @@
+---
+import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="mt-8 relative">
+  <div
+    id="cta-circle-container"
+    class="absolute inset-0 overflow-hidden bg-primary flex items-center justify-center"
+  >
+    <div class="circle bg-[#6D33CC]"></div>
+    <div class="circle bg-[#33CC4C]"></div>
+    <div class="circle bg-[#CC33C6]"></div>
+    <div class="circle bg-[#DE9C37]"></div>
+    <div class="circle bg-primary"></div>
+  </div>
+  <div
+    class="flex flex-col gap-6 py-24 backdrop-blur-[80px] text-center text-white items-center"
+  >
+    <h1 class="text-4xl md:text-5xl font-bold">Get started with Paige</h1>
+    <p class="max-w-md">
+      Join 10+ users as they have streamlined their productivity with paige
+      unique functionalities
+    </p>
+    <div class="flex gap-2">
+      <Button variant="plain">Get started</Button>
+      <a href="https://github.com/Dev-Motion/paige" target="_blank">
+        <Button
+          variant="outlineLight"
+          class="[--inset-shadow-color:#ffffff50]"
+          insetShadow
+        >
+          <Icon name="mdi:github" />
+           Contribute
+        </Button>
+      </a>
+    </div>
+  </div>
+</section>
+<script>
+  import { animate } from "motion";
+  
+</script>

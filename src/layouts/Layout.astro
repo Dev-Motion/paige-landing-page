@@ -1,11 +1,13 @@
 ---
-// Supports weights 300-900
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 import "@fontsource-variable/rubik";
-interface Props {
-  title: string;
-}
 
-const { title } = Astro.props;
+type Props = {
+  title?: string;
+};
+
+const { title="Paige: your personalize new tab" } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,36 +20,75 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="font-rubric">
+    <Navbar />
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global>
   :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
+    --nav-height: 64px;
   }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
+  .emphasize {
+    display: inline-block;
   }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
+  .circle {
+    height: 20vw;
+    width: 20vw;
+    max-height: 300px;
+    max-width: 300px;
+    min-height: 120px;
+    min-width: 120px;
+    border-radius: 999999px;
+    position: absolute;
+    opacity: 0.8;
   }
 </style>
+<script>
+  import { animate, inView } from "motion";
+  const circles = document.querySelectorAll(".circle");
+  const DURATION = 6;
+  const containers = ["cta-circle-container", "hero-circle-container"];
+  function animateCircles() {
+    containers.forEach((containerId) => {
+      const container = document.getElementById(containerId);
+      console.log(container);
+      circles.forEach((circle) => {
+        const width = container?.clientWidth ?? 0;
+        const height = container?.clientHeight ?? 0;
+        const containedWidth = width * 0.6;
+        const containedHeight = height * 0.6;
+        const x = Math.random() * containedWidth;
+        const y = Math.random() * containedHeight;
+        animate(
+          circle,
+          {
+            x: x - containedWidth / 2,
+            y: y - containedHeight / 2,
+          },
+          {
+            easing: "linear",
+            duration: DURATION,
+          }
+        );
+      });
+    });
+  }
+  animateCircles();
+  setInterval(animateCircles, 3000);
+
+  inView(".emphasize", ({ target }) => {
+    animate(
+      target,
+      {
+        scale: [1, 0.8, 1.4, 1.4, 1.4, 1.4, 1.4, 1],
+        rotate: [0, 5, -5, 5, -5, 5, -5, 0],
+      },
+      {
+        duration: 1.5,
+        easing: "ease-in-out",
+      }
+    );
+  });
+</script>

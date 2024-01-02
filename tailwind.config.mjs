@@ -6,12 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#6D33CC",
+        primary: "#6F78F0",
+        dark: "#262626",
       },
       fontFamily: {
-        rubric: ["Rubric", ...defaultTheme.fontFamily.sans],
+        rubric: ["Rubik Variable", ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography'),],
 };

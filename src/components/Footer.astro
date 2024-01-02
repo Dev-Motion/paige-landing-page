@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+const now = new Date().getFullYear();
+---
+
+<footer class="bg-white">
+  <div class="container mx-auto px-4 py-6 flex flex-wrap justify-between">
+    <div class="max-w-sm space-y-6">
+      <Icon name="logo" class="h-8 w-auto" />
+      <p>
+        Your personal new tab companinon. Plan, navigate, and personalize your
+        space.Focus, inspire, and achieve with every new tab.
+      </p>
+      <p>
+        {now}
+        <a href="https://www.devmotion.co/">DevMotion Inc.</a> All Rights
+        Reserved.
+      </p>
+    </div>
+    <div class="max-w-sm space-y-6">
+      <div class="flex flex-col gap-2">
+        <h3 class="text-lg font-semibold">Find us here</h3>
+        <ul class="flex gap-2">
+          <li>
+            <a href="#">
+              <Button size="default" variant="outline" icon>
+                <Icon name="mdi:twitter" size={24} />
+                <span class="sr-only">Twitter account</span>
+              </Button>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Dev-Motion/paige" target="_blank">
+              <Button size="default" variant="outline" icon>
+                <Icon name="mdi:github" size={24} />
+                <span class="sr-only">Github Repository</span>
+              </Button>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <Button size="default" variant="outline" icon>
+                <Icon name="mdi:linkedin" size={24} />
+                <span class="sr-only">Linkedin</span>
+              </Button>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="text-lg font-semibold">Other Links</h3>
+        <ul class="">
+          <li>
+            <a
+              href="/privacy-policy"
+              class="underline underline-offset-4 hover:underline-offset-1 hover:text-primary transition-all duration-200 ease-in-out"
+            >
+              Privacy Policy
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

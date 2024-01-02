@@ -1,0 +1,160 @@
+---
+import { Image } from "astro:assets";
+import { todoImages, themeImages, otherImages } from "@/data";
+---
+
+<section class="max-w-5xl mx-auto py-10 px-4">
+  <div class="text-center space-y-3">
+    <h1 class="text-3xl md:text-5xl font-bold text-center">
+      Our <span class="text-primary">Superb</span> Features
+    </h1>
+    <p>Explore a world of personalized browsing with our superb features</p>
+  </div>
+  <div class="flex flex-col gap-24 mt-12">
+    <div class="grid md:grid-cols-5 gap-6 items-center">
+      <div
+        id="todo-feature"
+        class="md:col-span-3 bg-[#F9F9F9] overflow-clip rounded-lg py-8"
+      >
+        <div
+          class="flex flex-col gap-2 w-[80%] max-w-[400px] items-center mx-auto"
+        >
+          {
+            todoImages.map((image) => {
+              return <Image src={image} alt="todo" class="todo-image " />;
+            })
+          }
+        </div>
+      </div>
+      <div class="md:col-span-2 space-y-4">
+        <h2 class="font-bold text-center md:text-left text-xl md:text-2xl">
+          Stay organized with our <span class="text-primary">to-do</span> & <span
+            class="text-primary emphasize">reminders</span
+          > feature
+        </h2>
+        <p class="text-center md:text-left">
+          The to-do list feature helps you stay organized and on top of your
+          tasks, ensuring you never forget an important deadline or appointment.
+        </p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-5 gap-6 items-center">
+      <div class="order-2 md:order-1 md:col-span-2 space-y-4">
+        <h2 class="font-bold text-center md:text-left text-xl md:text-2xl">
+          Personalized <span class="text-primary">theme</span> customized by you
+        </h2>
+        <p class="text-center md:text-left">
+          A great way to express your individuality and enhance your work
+          environment.
+        </p>
+      </div>
+      <div
+        id="theme-feature"
+        class="md:col-span-3 order-1 md:order-2 bg-[#F9F9F9] overflow-clip rounded-lg py-8"
+      >
+        <div class="w-[80%] max-w-[400px] items-center mx-auto">
+          <Image
+            src={themeImages[0]}
+            alt="theme"
+            class="w-[80%] mx-auto relative z-[10] theme-image"
+          />
+          <Image src={themeImages[1]} alt="theme" class="-mt-10 theme-image" />
+        </div>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-5 gap-6 items-center">
+      <div
+        id="other-feature"
+        class="md:col-span-3 bg-[#F9F9F9] overflow-clip rounded-lg py-8"
+      >
+        <div class="w-[80%] max-w-[400px] mx-auto custom-grid">
+          {
+            otherImages.slice(0, 3).map((image) => {
+              return <Image src={image} alt="other" class="other-image" />;
+            })
+          }
+          <Image src={otherImages[3]} alt="other" class="super other-image" />
+        </div>
+      </div>
+      <div class="md:col-span-2 space-y-4">
+        <h2 class="font-bold text-center md:text-left text-xl md:text-2xl">
+          Time, Weather, Fast Site Access and more
+        </h2>
+        <p class="text-center md:text-left">
+          Stay on Schedule, Weather at a Glance, Discover a suite of features
+          designed to enhance your online experience
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .custom-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 12px;
+    align-items: center;
+  }
+  .super {
+    grid-column: 2/3;
+    grid-row: 1/4;
+  }
+  .todo-image,
+  .theme-image,
+  .other-image {
+    opacity: 0;
+  }
+</style>
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  inView("#todo-feature", ({ target }) => {
+    animate(
+      target.querySelectorAll(".todo-image"),
+      {
+        opacity: [0, 1],
+        x: [-100, 0],
+      },
+      {
+        duration: 0.4,
+        easing: "ease-in-out",
+        delay: stagger(0.4, {
+          easing: "ease-in-out",
+        }),
+      }
+    );
+  });
+  inView("#theme-feature", ({ target }) => {
+    animate(
+      target.querySelectorAll(".theme-image"),
+      {
+        opacity: [0, 1],
+        y: [60, 0],
+      },
+      {
+        duration: 0.4,
+        easing: "ease-in-out",
+        delay: stagger(0.4, {
+          easing: "ease-in-out",
+        }),
+      }
+    );
+  });
+  inView("#other-feature", ({ target }) => {
+    animate(
+      target.querySelectorAll(".other-image"),
+      {
+        opacity: [0, 1],
+        y: [20, 0],
+      },
+      {
+        duration: 0.4,
+        easing: "ease-in-out",
+        delay: stagger(0.4, {
+          easing: "ease-in-out",
+        }),
+      }
+    );
+  });
+</script>
