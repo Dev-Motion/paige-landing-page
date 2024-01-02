@@ -1,0 +1,48 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import { Image } from "astro:assets";
+import Layout from "./Layout.astro";
+import privacyImage from "@/assets/images/privacy.jpeg";
+type Props = MarkdownLayoutProps<{
+  // Define frontmatter props here
+  title: string;
+  author: string;
+  date: string;
+}>;
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <main class="pt-[var(--nav-height)] px-4">
+    <div class="max-w-6xl mx-auto py-6">
+      <figure>
+        <Image
+          src={privacyImage}
+          alt="Privacy"
+          class="h-36 md:h-48 object-cover rounded-xl"
+        />
+        <figcaption>
+          <p class="text-sm text-left md:text-center text-gray-500 mt-2">
+            Photo by{" "}
+            <a
+              href="https://unsplash.com/@nasa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              class="underline"
+            >
+              NASA
+            </a>{" "}
+             on{" "}
+            <a
+              href="https://unsplash.com/photos/photo-of-outer-space-Q1p7bh3SHj8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              class="underline"
+            >
+              Unsplash
+            </a>
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+    <article class="prose md:prose-lg lg:prose-xl prose-dark mx-auto">
+      <slot />
+    </article>
+  </main>
+</Layout>
