@@ -1,0 +1,113 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+
+// import { cn } from "@/utils";
+
+const buttonVariants = cva(
+  "inline-flex gap-2 items-center justify-center font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-3 disabled:text-white",
+  {
+    variants: {
+      variant: {
+        primary: "bg-primary text-white hover:bg-primary/90 ",
+        secondary: "bg-dark text-white hover:bg-dark/90",
+        plain: "bg-white text-primary hover:bg-white/50",
+        "outline-plain":
+          "border border-gray-4 bg-transparent hover:bg-gray-600/50",
+        outline: "border border-dark text-gray-1 hover:bg-dark/20",
+        outlineLight: "border border-white text-gray-1 hover:bg-white/20",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        ghost: "hover:bg-accent hover:text-accent-foreground text-primary",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        sm: "h-9 px-4 text-sm [--icon-size:16px]",
+        default: "px-6 py-[10px] text-base [--icon-size:20px]",
+        lg: "py-3 px-6 text-lg font-semibold [--icon-size:24px]",
+      },
+      icon: {
+        true: "p-[0!important]",
+      },
+      rounded: {
+        default: "rounded-md",
+        full: "rounded-full",
+        none: "rounded-none",
+      },
+      fullWidth: {
+        true: "w-full",
+      },
+      insetShadow: {
+        true: "inset-box-shadow",
+      },
+    },
+    compoundVariants: [
+      {
+        icon: true,
+        size: "default",
+        className: "h-10 w-10",
+      },
+      {
+        icon: true,
+        size: "sm",
+        className: "h-7 w-7",
+      },
+      {
+        icon: true,
+        size: "lg",
+        className: "h-16 w-16",
+      },
+    ],
+    defaultVariants: {
+      variant: "primary",
+      size: "default",
+      rounded: "full",
+    },
+  }
+);
+
+export interface Props
+  extends HTMLAttributes<"button">,
+    VariantProps<typeof buttonVariants> {}
+
+const {
+  variant = "primary",
+  size = "default",
+  fullWidth,
+  rounded,
+  icon,
+  insetShadow,
+  ...rest
+} = Astro.props;
+---
+
+<button
+  class={buttonVariants({
+    variant,
+    size,
+    fullWidth,
+    rounded,
+    icon,
+    insetShadow,
+    className: rest.class,
+  })}
+  {...rest}
+>
+  <slot name="icon-before" />
+  <slot />
+  <slot name="icon-after" />
+</button>
+<style is:inline>
+  svg {
+    height: var(--icon-size);
+    width: var(--icon-size);
+  }
+  .inset-box-shadow {
+    box-shadow: 0px 0px 38px 0px
+      var(--inset-shadow-color, rgba(30, 30, 30, 0.95)) inset;
+  }
+  .inset-box-shadow:hover {
+    box-shadow: 0px 0px 38px 0px
+      var(--inset-shadow-color, rgba(30, 30, 30, 0.95)) inset;
+  }
+</style>
