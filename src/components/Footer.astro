@@ -7,7 +7,10 @@ const now = new Date().getFullYear();
 <footer class="bg-white">
   <div class="container mx-auto px-4 py-6 flex flex-wrap justify-between">
     <div class="max-w-sm space-y-6">
-      <Icon name="logo" class="h-8 w-auto" />
+      <a href="/">
+        <Icon name="logo" class="h-8 w-auto" />
+        <span class="sr-only">Paige logo</span>
+      </a>
       <p>
         Your personal new tab companinon. Plan, navigate, and personalize your
         space.Focus, inspire, and achieve with every new tab.
@@ -20,36 +23,37 @@ const now = new Date().getFullYear();
     </div>
     <div class="max-w-sm space-y-6">
       <div class="flex flex-col gap-2">
-        <h3 class="text-lg font-semibold">Find us here</h3>
+        <p class="text-lg font-semibold">Find us here</p>
         <ul class="flex gap-2">
           <li>
-            <a href="#">
-              <Button size="default" variant="outline" icon>
-                <Icon name="mdi:twitter" size={24} />
-                <span class="sr-only">Twitter account</span>
-              </Button>
-            </a>
+            <Button size="default" variant="outline" as="a" href="#" icon>
+              <Icon name="mdi:twitter" size={24} />
+              <span class="sr-only">Twitter account</span>
+            </Button>
           </li>
           <li>
-            <a href="https://github.com/Dev-Motion/paige" target="_blank">
-              <Button size="default" variant="outline" icon>
-                <Icon name="mdi:github" size={24} />
-                <span class="sr-only">Github Repository</span>
-              </Button>
-            </a>
+            <Button
+              size="default"
+              variant="outline"
+              as="a"
+              href="https://github.com/Dev-Motion/paige"
+              target="_blank"
+              icon
+            >
+              <Icon name="mdi:github" size={24} />
+              <span class="sr-only">Github Repository</span>
+            </Button>
           </li>
           <li>
-            <a href="#">
-              <Button size="default" variant="outline" icon>
-                <Icon name="mdi:linkedin" size={24} />
-                <span class="sr-only">Linkedin</span>
-              </Button>
-            </a>
+            <Button size="default" variant="outline" as="a" href="#" icon>
+              <Icon name="mdi:linkedin" size={24} />
+              <span class="sr-only">Linkedin</span>
+            </Button>
           </li>
         </ul>
       </div>
       <div class="flex flex-col gap-2">
-        <h3 class="text-lg font-semibold">Other Links</h3>
+        <p class="text-lg font-semibold">Other Links</p>
         <ul class="">
           <li>
             <a

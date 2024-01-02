@@ -2,20 +2,6 @@
 import Button from "./Button.astro";
 import { Icon } from "astro-icon/components";
 
-const links = [
-  {
-    name: "Services",
-    url: "#services",
-  },
-  {
-    name: "Our works",
-    url: "#works",
-  },
-  {
-    name: "Review",
-    url: "#review",
-  },
-];
 ---
 
 <nav class="fixed left-0 top-0 w-full z-10 overflow-hidden backdrop-blur-md">
@@ -24,14 +10,19 @@ const links = [
   >
     <a href="/">
       <Icon name="logo" class="h-8 w-auto" />
+      <span class="sr-only">Paige Logo</span>
     </a>
     <div class="flex gap-4">
-      <a href="https://github.com/Dev-Motion/paige" target="_blank">
-        <Button variant="outline" class="hidden md:flex">
-          <Icon name="mdi:github" />
-           Contribute
-        </Button>
-      </a>
+      <Button
+        variant="outline"
+        class="hidden md:flex"
+        as="a"
+        href="https://github.com/Dev-Motion/paige"
+        target="_blank"
+      >
+        <Icon name="mdi:github" />
+         Contribute
+      </Button>
       <Button variant="secondary">Add to browser</Button>
     </div>
   </div>

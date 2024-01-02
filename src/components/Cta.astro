@@ -24,20 +24,20 @@ import { Icon } from "astro-icon/components";
     </p>
     <div class="flex gap-2">
       <Button variant="plain">Get started</Button>
-      <a href="https://github.com/Dev-Motion/paige" target="_blank">
-        <Button
-          variant="outlineLight"
-          class="[--inset-shadow-color:#ffffff50]"
-          insetShadow
-        >
-          <Icon name="mdi:github" />
-           Contribute
-        </Button>
-      </a>
+      <Button
+        variant="outlineLight"
+        class="[--inset-shadow-color:#ffffff50]"
+        as="a"
+        href="https://github.com/Dev-Motion/paige"
+        target="_blank"
+        insetShadow
+      >
+        <Icon name="mdi:github" />
+         Contribute
+      </Button>
     </div>
   </div>
 </section>
 <script>
   import { animate } from "motion";
-  
 </script>
