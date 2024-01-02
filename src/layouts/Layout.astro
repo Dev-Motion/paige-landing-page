@@ -7,14 +7,17 @@ type Props = {
   title?: string;
 };
 
-const { title="Paige: your personalize new tab" } = Astro.props;
+const { title = "Paige - Your Personalized New Tab Companion" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Experience Paige, a Chrome extension that transforms every new tab into a personalized dashboard. Plan your day, navigate with ease, and customize your space. Enhance your browsing experience with Paige"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
