@@ -6,10 +6,14 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon({
-    iconDir: "./src/assets/icons",
-    include: {
-      mdi: ["*"]
-    }
-  }), mdx()]
+  integrations: [
+    tailwind(),
+    icon({
+      iconDir: "./src/assets/icons",
+      include: {
+        mdi: ["twitter", "github", "linkedin"],
+      },
+    }),
+    mdx(),
+  ],
 });
