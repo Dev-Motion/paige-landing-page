@@ -19,12 +19,13 @@ import PaigePreview from "@/assets/images/paige-preview.png";
     </div>
   </div>
   <div
-    class="pt-[--nav-height] min-h-[90vh] md:min-h-auto flex flex-col justify-between md:block"
+    id="hero"
+    class="opacity-0 pt-[--nav-height] min-h-[90vh] md:min-h-auto flex flex-col justify-between md:block"
   >
     <div
       class="max-w-[700px] md:h-[70vh] md:max-h-[740px] mx-auto py-16 px-4 flex flex-col items-center gap-9"
     >
-      <h1 class="text-4xl md:text-6xl font-bold text-center">
+      <h1 class="op text-4xl md:text-6xl font-bold text-center">
         Personalized <span class="text-primary text-nowrap">New Tab</span> for
         Your Browser
       </h1>
@@ -32,11 +33,14 @@ import PaigePreview from "@/assets/images/paige-preview.png";
         Designed to enhance your browsing experience with a range of features
         and benefits that help you personalize your new tab page.
       </p>
-      <Button class="[--inset-shadow-color:#ffffff50]" insetShadow>
+      <Button
+        class="[--inset-shadow-color:#ffffff50]"
+        insetShadow
+      >
         Add to browser
       </Button>
     </div>
-    <div class="perspective pb-10 px-4">
+    <div id="hero-image" class="perspective pb-10 px-4">
       <div
         id="paige-preview"
         class="overflow-clip p-2.5 rounded-[20px] md:p-5 md:rounded-[44px] bg-gradient-to-b from-[#6F78F04F] via-[#F3735754] to-[#F9CC1547] lg:w-4/5 lg:max-w-5xl mx-auto shadow-xl"
@@ -65,8 +69,8 @@ import PaigePreview from "@/assets/images/paige-preview.png";
   }
 </style>
 <script>
-  import { inView, animate } from "motion";
-
+  import { inView, animate, stagger } from "motion";
+  import SplitType from "split-type";
   function animatePreviewImage() {
     inView(
       "#paige-preview",
@@ -88,5 +92,33 @@ import PaigePreview from "@/assets/images/paige-preview.png";
     );
   }
 
-  animatePreviewImage();
+  function animateHero() {
+    const heading = new SplitType("#hero h1", { types: "words" });
+    const paragraph = new SplitType("#hero p", {
+      types: "lines",
+    });
+    const heroElements = [
+      ...heading.words!,
+      ...paragraph.lines!,
+      document.querySelector("#hero button")!,
+      document.querySelector("#hero .perspective")!,
+    ];
+    animate("#hero", {
+      opacity: [0, 1],
+    });
+    animate(
+      heroElements,
+      {
+        y: [28, 0],
+        opacity: [0, 1],
+      },
+      {
+        duration: 0.8,
+        delay: stagger(0.2),
+      }
+    );
+    animatePreviewImage();
+  }
+  // Delay for 400ms
+  setTimeout(animateHero, 400);
 </script>
