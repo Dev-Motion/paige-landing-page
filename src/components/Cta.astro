@@ -1,6 +1,7 @@
 ---
 import Button from "./Button.astro";
 import { Icon } from "astro-icon/components";
+import { paigeChromeUrl } from "@/data";
 ---
 
 <section class="mt-8 relative">
@@ -23,7 +24,9 @@ import { Icon } from "astro-icon/components";
       unique functionalities
     </p>
     <div class="flex gap-2">
-      <Button variant="plain">Get started</Button>
+      <Button variant="plain" as="a" href={paigeChromeUrl} target="_blank">
+        Get started
+      </Button>
       <Button
         variant="outlineLight"
         class="[--inset-shadow-color:#ffffff50]"
@@ -33,7 +36,7 @@ import { Icon } from "astro-icon/components";
         insetShadow
       >
         <Icon name="mdi:github" />
-         Contribute
+        Contribute
       </Button>
     </div>
   </div>

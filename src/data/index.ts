@@ -13,3 +13,5 @@ export const todoImages = [todo1, todo2, todo3, todo4] as const;
 export const themeImages = [theme1, theme2] as const;
 export const otherImages = [other1, other2, other3, other4] as const;
 
+export const paigeChromeUrl =
+  "https://chromewebstore.google.com/detail/paige/lkaoagnkdijngokdakkojhkhopaekjib?hl=en";
