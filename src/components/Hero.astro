@@ -35,7 +35,7 @@ import { paigeChromeUrl } from "@/data";
         and benefits that help you personalize your new tab page.
       </p>
       <Button
-        class="[--inset-shadow-color:#ffffff50]"
+        class="[--inset-shadow-color:#ffffff50] inline-block"
         insetShadow
         as="a"
         href={paigeChromeUrl}
@@ -104,7 +104,7 @@ import { paigeChromeUrl } from "@/data";
     const heroElements = [
       ...heading.words!,
       ...paragraph.lines!,
-      document.querySelector("#hero button")!,
+      document.querySelector("#hero a")!,
       document.querySelector("#hero .perspective")!,
     ];
     animate("#hero", {
