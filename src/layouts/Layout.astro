@@ -56,7 +56,6 @@ const { title = "Paige - Your Personalized New Tab Companion" } = Astro.props;
   function animateCircles() {
     containers.forEach((containerId) => {
       const container = document.getElementById(containerId);
-      console.log(container);
       circles.forEach((circle) => {
         const width = container?.clientWidth ?? 0;
         const height = container?.clientHeight ?? 0;
