@@ -6,7 +6,7 @@ import { todoImages, themeImages, otherImages } from "@/data";
 <section class="max-w-5xl mx-auto py-10 px-4">
   <div class="text-center space-y-3">
     <h1 class="text-3xl md:text-5xl font-bold text-center">
-      Our <span class="text-primary">Superb</span> Features
+      Our <span id="superb" class="text-">Superb</span> Features
     </h1>
     <p>Explore a world of personalized browsing with our superb features</p>
   </div>
@@ -14,8 +14,13 @@ import { todoImages, themeImages, otherImages } from "@/data";
     <div class="grid md:grid-cols-5 gap-6 items-center">
       <div
         id="todo-feature"
-        class="md:col-span-3 bg-[#F9F9F9] overflow-clip rounded-lg py-8"
+        class="md:col-span-3 bg-[#F9F9F9] overflow-clip rounded-lg py-8 relative"
       >
+        <div
+          class="blur-bg absolute inset-0 rounded-[50%] h-[40%] m-auto blur-3xl bg-[#D5486A]"
+        >
+        </div>
+
         <div
           class="flex flex-col gap-2 w-[80%] max-w-[400px] items-center mx-auto"
         >
@@ -28,8 +33,8 @@ import { todoImages, themeImages, otherImages } from "@/data";
       </div>
       <div class="md:col-span-2 space-y-4">
         <h2 class="font-bold text-center md:text-left text-xl md:text-2xl">
-          Stay organized with our <span class="text-primary">to-do</span> & <span
-            class="text-primary emphasize">reminders</span
+          Stay organized with our <span class="text-[#D5486A]">to-do</span> & <span
+            class="text-[#D5486A] emphasize">reminders</span
           > feature
         </h2>
         <p class="text-center md:text-left">
@@ -41,7 +46,7 @@ import { todoImages, themeImages, otherImages } from "@/data";
     <div class="grid md:grid-cols-5 gap-6 items-center">
       <div class="order-2 md:order-1 md:col-span-2 space-y-4">
         <h2 class="font-bold text-center md:text-left text-xl md:text-2xl">
-          Personalized <span class="text-primary">theme</span> customized by you
+          Personalized <span class="text-[#F37357]">theme</span> customized by you
         </h2>
         <p class="text-center md:text-left">
           A great way to express your individuality and enhance your work
@@ -50,8 +55,12 @@ import { todoImages, themeImages, otherImages } from "@/data";
       </div>
       <div
         id="theme-feature"
-        class="md:col-span-3 order-1 md:order-2 bg-[#F9F9F9] overflow-clip rounded-lg py-8"
+        class="md:col-span-3 order-1 md:order-2 bg-[#F9F9F9] overflow-clip rounded-lg py-8 relative"
       >
+        <div
+          class="blur-bg absolute inset-0 rounded-[50%] h-[40%] m-auto blur-3xl bg-[#F37357]"
+        >
+        </div>
         <div class="w-[80%] max-w-[400px] items-center mx-auto">
           <Image
             src={themeImages[0]}
@@ -65,8 +74,12 @@ import { todoImages, themeImages, otherImages } from "@/data";
     <div class="grid md:grid-cols-5 gap-6 items-center">
       <div
         id="other-feature"
-        class="md:col-span-3 bg-[#F9F9F9] overflow-clip rounded-lg py-8"
+        class="md:col-span-3 bg-[#F9F9F9] overflow-clip rounded-lg py-8 relative"
       >
+        <div
+          class="blur-bg absolute inset-0 rounded-[50%] h-[40%] m-auto blur-3xl bg-primary"
+        >
+        </div>
         <div class="w-[80%] max-w-[400px] mx-auto custom-grid">
           {
             otherImages.slice(0, 3).map((image) => {
@@ -88,74 +101,173 @@ import { todoImages, themeImages, otherImages } from "@/data";
       </div>
     </div>
   </div>
-</section>
-<style>
-  .custom-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    grid-template-rows: repeat(3, auto);
-    gap: 12px;
-    align-items: center;
-  }
-  .super {
-    grid-column: 2/3;
-    grid-row: 1/4;
-  }
-  .todo-image,
-  .theme-image,
-  .other-image {
-    opacity: 0;
-  }
-</style>
-<script>
-  import { animate, stagger, inView } from "motion";
 
-  inView("#todo-feature", ({ target }) => {
-    animate(
-      target.querySelectorAll(".todo-image"),
-      {
-        opacity: [0, 1],
-        x: [-100, 0],
+  <svg width="660" height="220">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#D5486A;stop-opacity:1"></stop>
+        <stop offset="50%" style="stop-color:#F37357;stop-opacity:1"></stop>
+        <stop offset="100%" style="stop-color:#6F78F0;stop-opacity:1"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <style>
+    .custom-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      grid-template-rows: repeat(3, auto);
+      gap: 12px;
+      align-items: center;
+    }
+    .super {
+      grid-column: 2/3;
+      grid-row: 1/4;
+    }
+    .todo-image,
+    .theme-image,
+    .other-image,
+    .blur-bg {
+      opacity: 0;
+    }
+  </style>
+  <script>
+    import { animate, stagger, inView } from "motion";
+    import { annotate } from "rough-notation";
+
+    inView(
+      "#superb",
+      ({ target }) => {
+        // @ts-ignore
+        const annotation = annotate(target, {
+          type: "circle",
+          color: "url(#gradient)",
+          padding: 5,
+          strokeWidth: 2.5,
+        });
+
+        annotation.show();
+        const random = Math.floor(Math.random() * 3);
+        const colors = ["#D5486A", "#F37357", "#6F78F0"];
+        animate(
+          target,
+          {
+            color: colors[random],
+          },
+          {
+            delay: 0.6,
+          }
+        );
       },
       {
-        duration: 0.4,
-        easing: "ease-in-out",
-        delay: stagger(0.4, {
-          easing: "ease-in-out",
-        }),
+        amount: 1,
       }
     );
-  });
-  inView("#theme-feature", ({ target }) => {
-    animate(
-      target.querySelectorAll(".theme-image"),
-      {
-        opacity: [0, 1],
-        y: [60, 0],
+
+    inView(
+      "#todo-feature",
+      ({ target }) => {
+        const todoImages = target.querySelectorAll(".todo-image");
+        animate(
+          target.querySelectorAll(".blur-bg")[0],
+          {
+            opacity: [0, 1],
+            width: ["20%", "80%"],
+          },
+          {
+            delay: 0.2 * todoImages.length,
+            duration: 0.8,
+            easing: "ease-in-out",
+          }
+        );
+        animate(
+          todoImages,
+          {
+            opacity: [0, 1],
+            x: [-100, 0],
+          },
+          {
+            duration: 0.4,
+            easing: "ease-in-out",
+            delay: stagger(0.2, {
+              easing: "ease-in-out",
+            }),
+          }
+        );
       },
       {
-        duration: 0.4,
-        easing: "ease-in-out",
-        delay: stagger(0.4, {
-          easing: "ease-in-out",
-        }),
+        amount: 0.4,
       }
     );
-  });
-  inView("#other-feature", ({ target }) => {
-    animate(
-      target.querySelectorAll(".other-image"),
-      {
-        opacity: [0, 1],
-        y: [20, 0],
+    inView(
+      "#theme-feature",
+      ({ target }) => {
+        const themeImages = target.querySelectorAll(".theme-image");
+        animate(
+          target.querySelectorAll(".blur-bg")[0],
+          {
+            opacity: [0, 1],
+            width: ["20%", "90%"],
+          },
+          {
+            delay: 0.2 * themeImages.length,
+            duration: 0.8,
+            easing: "ease-in-out",
+          }
+        );
+        animate(
+          themeImages,
+          {
+            opacity: [0, 1],
+            y: [60, 0],
+          },
+          {
+            duration: 0.4,
+            easing: "ease-in-out",
+            delay: stagger(0.2, {
+              easing: "ease-in-out",
+            }),
+          }
+        );
       },
       {
-        duration: 0.4,
-        easing: "ease-in-out",
-        delay: stagger(0.4, {
-          easing: "ease-in-out",
-        }),
+        amount: 0.4,
       }
     );
-  });
-</script>
+    inView(
+      "#other-feature",
+      ({ target }) => {
+        const otherImages = target.querySelectorAll(".other-image");
+        animate(
+          target.querySelectorAll(".blur-bg")[0],
+          {
+            opacity: [0, 1],
+            width: ["20%", "80%"],
+          },
+          {
+            delay: 0.2 * otherImages.length,
+            duration: 0.8,
+            easing: "ease-in-out",
+          }
+        );
+        animate(
+          otherImages,
+          {
+            opacity: [0, 1],
+            y: [20, 0],
+          },
+          {
+            duration: 0.4,
+            easing: "ease-in-out",
+            delay: stagger(0.2, {
+              easing: "ease-in-out",
+            }),
+          }
+        );
+      },
+      {
+        amount: 0.4,
+      }
+    );
+  </script>
+</section>

@@ -35,6 +35,9 @@ dependencies:
   motion:
     specifier: ^10.16.4
     version: 10.16.4
+  rough-notation:
+    specifier: ^0.5.1
+    version: 0.5.1
   sharp:
     specifier: ^0.33.1
     version: 0.33.1
@@ -4238,6 +4241,10 @@ packages:
       '@rollup/rollup-win32-ia32-msvc': 4.9.1
       '@rollup/rollup-win32-x64-msvc': 4.9.1
       fsevents: 2.3.3
+    dev: false
+
+  /rough-notation@0.5.1:
+    resolution: {integrity: sha512-ITHofTzm13cWFVfoGsh/4c/k2Mg8geKgBCwex71UZLnNuw403tCRjYPQ68jSAd37DMbZIePXPjDgY0XdZi9HPw==}
     dev: false
 
   /run-parallel@1.2.0:
