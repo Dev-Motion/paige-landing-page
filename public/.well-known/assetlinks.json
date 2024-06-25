@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.examcrush.client",
+      "sha256_cert_fingerprints": [
+        "78:3C:A7:3E:66:C3:81:65:73:3F:74:65:8D:40:80:3F:C1:D2:34:FB"
+      ]
+    }
+  }
+]
