@@ -1,7 +1,7 @@
 ---
 import Button from "./Button.astro";
 import { Icon } from "astro-icon/components";
-
+import { paigeChromeUrl } from "@/data";
 ---
 
 <nav class="fixed left-0 top-0 w-full z-10 overflow-hidden backdrop-blur-md">
@@ -15,15 +15,19 @@ import { Icon } from "astro-icon/components";
     <div class="flex gap-4">
       <Button
         variant="outline"
-        class="hidden md:flex"
         as="a"
         href="https://github.com/Dev-Motion/paige"
         target="_blank"
       >
         <Icon name="mdi:github" />
-         Contribute
+        Contribute
       </Button>
-      <Button variant="secondary">Add to browser</Button>
+      <Button
+        variant="secondary"
+        as="a"
+        href={paigeChromeUrl}
+        class="hidden md:flex">Add to browser</Button
+      >
     </div>
   </div>
 </nav>
